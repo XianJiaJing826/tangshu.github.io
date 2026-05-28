@@ -1,0 +1,160 @@
+/* 登录页整体背景与首页保持一致 */
+body.page-login {
+  background: #07110f;
+  color: #fff;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* 登录容器 */
+.login-shell {
+  width: min(92%, 480px);
+  margin: 0 auto;
+  padding: 48px 42px;
+  border-radius: 34px;
+  background: rgba(255,255,255,.035);
+  border: 1px solid rgba(198,168,106,.12);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 30px 80px rgba(0,0,0,.28);
+  display: grid;
+  gap: 32px;
+  text-align: left;
+  position: relative;
+  z-index: 2;
+}
+
+/* 顶部柔光 */
+.hero-light {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(198,168,106,.15), transparent 60%);
+  filter: blur(20px);
+  animation: float 12s ease-in-out infinite;
+  z-index: 1;
+}
+
+/* 输入框 */
+.login-shell input {
+  width: 100%;
+  margin-top: 10px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(198,168,106,.22);
+  background: rgba(255,255,255,.04);
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+  transition: .35s;
+}
+
+.login-shell input:focus {
+  border-color: rgba(198,168,106,.45);
+  box-shadow: 0 0 18px rgba(198,168,106,.25);
+}
+
+/* 登录按钮 */
+.login-shell .enter {
+  width: 100%;
+  justify-content: center;
+  margin-top: 10px;
+  background: rgba(255,255,255,.06);
+  border-color: rgba(198,168,106,.25);
+  color: #C6A86A;
+}
+
+.login-shell .enter:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(198,168,106,.18);
+}
+
+/* 忘记密码 */
+.login-shell a.small {
+  text-align: center;
+  opacity: .75;
+  transition: .3s;
+}
+
+.login-shell a.small:hover {
+  opacity: 1;
+  color: #C6A86A;
+}
+
+/* 小标题 */
+.login-shell .small {
+  color: #6FA89A;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  font-size: 12px;
+  opacity: .88;
+}
+
+/* 标题 */
+.login-shell .title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 300;
+  background: linear-gradient(to right, #f7e6c8, #C6A86A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 文案 */
+.login-shell .text {
+  color: rgba(255,255,255,.66);
+  line-height: 1.9;
+  font-size: 16px;
+}
+
+/* 动画 */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
+
+/* 响应式 */
+@media(max-width: 768px) {
+  .login-shell {
+    padding: 36px 28px;
+    border-radius: 28px;
+  }
+}
+/* 顶部导航条 */
+.nav {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 18px 36px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(198,168,106,.2);
+  backdrop-filter: blur(18px);
+  z-index: 999;
+}
+
+/* 导航列表 */
+.nav ul {
+  display: flex;
+  gap: 26px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* 链接样式 */
+.nav a {
+  color: #C6A86A;
+  letter-spacing: .22em;
+  font-size: 13px;
+  text-decoration: none;
+  transition: .5s;
+}
+
+/* 悬停与激活状态 */
+.nav a.active,
+.nav a:hover {
+  color: #fff;
+  text-shadow: 0 0 12px rgba(198,168,106,.6);
+}
