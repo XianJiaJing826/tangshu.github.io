@@ -28,6 +28,20 @@ a:focus-visible,button:focus-visible{
 outline:1px solid rgba(198,168,106,.72);
 outline-offset:4px;
 }
+
+/* 鼠标跟踪高光效果 */
+.cursor-glow{
+position:fixed;
+width:500px;
+height:500px;
+background:radial-gradient(circle,rgba(198,168,106,0.1),transparent 65%);
+pointer-events:none;
+z-index:0;
+filter:blur(50px);
+transform:translate(-50%,-50%);
+transition:opacity 0.3s ease;
+opacity:0;
+}
 body::before{
 content:"";
 position:fixed;
@@ -46,27 +60,42 @@ backdrop-filter:blur(2px);
 pointer-events:none;
 z-index:-2;
 }
-.nav{
-position:fixed;
-top:20px;
-left:50%;
-transform:translateX(-50%);
-padding:18px 30px;
-border-radius:999px;
-background:rgba(8,20,18,.34);
-border:1px solid rgba(198,168,106,.2);
-backdrop-filter:blur(18px);
-box-shadow:0 20px 60px rgba(0,0,0,.18);
-z-index:999;
+.nav {
+  display: flex;          /* 让导航栏成为可居中的 flex 容器 */
+  justify-content: center;/* 让导航栏内容居中 */
+  width: 100%;            /* 让导航栏占满宽度，才能真正居中 */
+  margin-top: 40px;
 }
-.nav ul{display:flex;gap:26px;list-style:none}
-.nav a{
-color:#C6A86A;
-letter-spacing:.22em;
-font-size:13px;
-transition:.5s;
+
+
+.nav ul {
+  background-color: rgba(0, 20, 10, 0.8);
+  border: 1px solid #a08b4c;
+  border-radius: 40px;
+  padding: 10px 40px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
 }
-.nav a.active,.nav a:hover{color:#fff}
+
+
+.nav a {
+  color: #d8c27a;
+  font-size: 18px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav a:hover {
+  color: #fff;
+}
+
+.nav a.active {
+  color: #fff;
+  font-weight: bold;
+}
+
 .hero{
 min-height:100vh;
 display:flex;
@@ -603,4 +632,139 @@ transform:none;
 .image-placeholders:hover img {
   transform: scale(1.06);
   filter: brightness(1.15);
+}
+/* ===== 外层舞台 ===== */
+.practice-stage{
+  position: relative;
+  overflow: hidden;
+  min-height: 520px;
+}
+
+/* ===== 面板基础 ===== */
+.practice-panel{
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  gap: 60px;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transform:
+    translateX(80px)
+    scale(0.96);
+
+  filter: blur(14px);
+
+  transition:
+    transform .8s cubic-bezier(.22,.61,.36,1),
+    opacity .7s ease,
+    filter .7s ease;
+
+  will-change: transform, opacity, filter;
+}
+
+/* ===== 当前显示 ===== */
+.practice-panel.active{
+  opacity: 1;
+  pointer-events: auto;
+
+  transform:
+    translateX(0)
+    scale(1);
+
+  filter: blur(0);
+  z-index: 2;
+}
+
+/* ===== 离开动画 ===== */
+.practice-panel.leave-left{
+  opacity: 0;
+
+  transform:
+    translateX(-120px)
+    scale(.94)
+    rotateY(-8deg);
+
+  filter: blur(18px);
+
+  z-index: 1;
+}
+
+/* ===== 从右侧进入 ===== */
+.practice-panel.enter-right{
+  opacity: 0;
+
+  transform:
+    translateX(120px)
+    scale(.95);
+
+  filter: blur(16px);
+}
+
+/* ===== 图片动画 ===== */
+.practice-main img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  transition:
+    transform 1.2s ease,
+    filter 1s ease;
+}
+
+.practice-panel.active .practice-main img{
+  transform: scale(1);
+  filter: brightness(1);
+}
+
+.practice-panel:not(.active) .practice-main img{
+  transform: scale(1.08);
+  filter: brightness(.8);
+}
+
+/* ===== 标签按钮 ===== */
+.practice-tab{
+  position: relative;
+  overflow: hidden;
+
+  transition:
+    color .4s ease,
+    background .4s ease,
+    transform .3s ease;
+}
+
+.practice-tab:hover{
+  transform: translateY(-2px);
+}
+
+.practice-tab.active{
+  background: rgba(212,175,55,.16);
+  color: #d4af37;
+}
+
+/* 金色滑动条 */
+.practice-tab::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #d4af37,
+    transparent
+  );
+
+  transform: translateX(-100%);
+  transition: transform .5s ease;
+}
+
+.practice-tab.active::after{
+  transform: translateX(0);
 }

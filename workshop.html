@@ -4,9 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>沉浸研习 · 唐姝驾到</title>
+<link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/workshop.css">
 </head>
 <body class="page-workshop">
+<div class="cursor-glow"></div>
 
 <nav class="nav">
 <ul>
@@ -30,8 +32,7 @@
       <div class="small">Future Oriental Workshop</div>
       <h1>指尖所触，皆为千年工艺</h1>
       <p class="desc">
-      这里不是成果展示页，而是一座可以进入的未来东方工坊。
-      用户将不只观看技艺，而是被邀请走到案前，在丝线、香雾、妆台与灯影之中重新学习一门来自大唐的手艺。
+      沿着丝线的纹路、香气的流动和灯火映出的光影，你可以一步步走近那些曾经存在于长安日常中的手艺。妆台前的细致描绘、绣架上的针脚起落、香案旁的缓慢调和，都不再只是展柜里的故事，而成为能够被看见、被感受、被重新体验的生活片段。
       </p>
       <div class="hero-actions">
         <a class="enter" href="#microscope">开始研习</a>
@@ -45,8 +46,8 @@
       <div class="small">Micro Reconstruction</div>
       <h2 class="title">那些曾被时间磨损的纹理，如今得以再次被看见</h2>
       <p class="text">
-      这一段不让技术站在最前面，而是让你先看见那些平时无法靠近的细节。
-      金线的折光、丝绸的起伏、玉石的边缘与花钿的层次，会以更微观的方式重新呈现。
+      当视线慢慢靠近，许多曾被一眼略过的细节开始显现。
+金线的流光、丝绸的纹理、玉石的温润与花钿的精巧，不再只是远观时的印象，而成为能够被细细体会的存在。
       </p>
     </div>
 
@@ -72,7 +73,9 @@
         </p>
         <div class="micro-note">
           <span>技术底层：</span>
-          <p>这里后续可以替换为基于 3DGS 的高保真细节展示素材。</p>
+          <p>当视线不断靠近，器物与技艺中的细节也会渐渐展开。
+
+一根丝线的纹理、一片花钿的层次、一枚饰件的雕琢痕迹，都不再停留于远观时的轮廓，而是以更丰富的面貌呈现在眼前。</p>
         </div>
       </div>
     </div>
@@ -83,7 +86,10 @@
       <div class="small">Virtual Practice</div>
       <h2 class="title">在数字工坊中，重新学习一门技艺</h2>
       <p class="text">
-      这一部分强调的是参与感。你不是站在屏幕外，而是像被带入三个不同的研习案前，跟随唐姝一步步理解节奏、分寸与审美。
+      不同的技艺有不同的节奏。
+
+有人从一针一线开始认识刺绣，有人透过花钿与妆容理解盛唐风尚，也有人在香气氤氲间读懂古人的生活情趣。每一次驻足，都是一次新的发现。
+
       </p>
     </div>
 
@@ -98,7 +104,6 @@
         <article class="practice-panel active" data-panel="embroidery">
           <div class="practice-visual">
             <div class="image-placeholder practice-main">
-  <span>数字刺绣台主视觉占位</span>
   <img src="images/practice-embroidery.jpg" alt="数字刺绣台主视觉">
 </div>
 
@@ -112,9 +117,9 @@
             <div class="practice-meta">Embroidery Training</div>
             <h3>针脚需缓，不可急，金线需顺光而行</h3>
             <p>
-            用户在这一模块中会像站在一张未来东方刺绣台前，先理解针脚的走向，再理解节奏与耐心如何共同构成一件作品的质感。
-            </p>
-            <div class="mentor-quote" id="mentor-quote">
+华丽的纹样背后，藏着许多不易察觉的时刻。
+
+丝线在指尖穿行，纹样在反复推敲中逐渐成形，耐心与专注被一点点织入布面。那些无法被一眼看见的部分，恰恰构成了一件作品最动人的质地。            <div class="mentor-quote" id="mentor-quote">
               <p>针脚需缓。</p>
               <p>不可急。</p>
               <p>金线需顺光而行。</p>
@@ -122,10 +127,67 @@
           </div>
         </article>
 
+<script>
+const tabs = document.querySelectorAll(".practice-tab");
+const panels = document.querySelectorAll(".practice-panel");
+
+tabs.forEach(tab => {
+
+  tab.addEventListener("click", () => {
+
+    const target = tab.dataset.practice;
+
+    // 当前面板
+    const currentPanel = document.querySelector(".practice-panel.active");
+
+    // 目标面板
+    const nextPanel = document.querySelector(
+      `.practice-panel[data-panel="${target}"]`
+    );
+
+    // 已经是当前页
+    if(currentPanel === nextPanel) return;
+
+    // 按钮状态
+    tabs.forEach(t => t.classList.remove("active"));
+    tab.classList.add("active");
+
+    // 当前离场
+    currentPanel.classList.add("leave-left");
+
+    // 下一页准备进入
+    nextPanel.classList.add("enter-right");
+
+    // 强制刷新
+    void nextPanel.offsetWidth;
+
+    // 激活下一页
+    nextPanel.classList.add("active");
+
+    // 下一帧移除 enter
+    requestAnimationFrame(() => {
+      nextPanel.classList.remove("enter-right");
+    });
+
+    // 动画结束后清理
+    setTimeout(() => {
+
+      currentPanel.classList.remove(
+        "active",
+        "leave-left"
+      );
+
+    }, 700);
+
+  });
+
+});
+</script>
+
+
         <article class="practice-panel" data-panel="makeup">
           <div class="practice-visual">
             <div class="image-placeholder practice-main">
-  <span>未来东方妆台主视觉占位</span>
   <img src="images/tang-makeup.jpg" alt="未来东方妆台主视觉">
 </div>
 
@@ -152,7 +214,6 @@
         <article class="practice-panel" data-panel="incense">
           <div class="practice-visual">
             <div class="image-placeholder practice-main">
-  <span>数字香艺空间主视觉占位</span>
   <img src="images/incense-art.jpg" alt="数字香艺空间主视觉">
 </div>
 
@@ -184,7 +245,10 @@
       <div class="small">Dynasty Scroll</div>
       <h2 class="title">初唐到晚唐，被展开的不只是时代，也是手艺与女性气质的变化</h2>
       <p class="text">
-      这是一条横向沉浸式长卷，不是为了罗列知识点，而是让用户感受到时间如何缓慢地改变妆造、礼仪、刺绣与生活感受。
+      时间并不总是轰轰烈烈地向前。
+
+它藏在妆台前添上的一笔花钿里，藏在衣袖间渐渐变化的纹样中，也藏在礼仪与日常习惯细微的转变之间。随着画卷徐徐展开，这些变化也会被慢慢看见。
+
       </p>
     </div>
 
@@ -192,8 +256,7 @@
       <article class="timeline-card fade">
         <div class="timeline-era">初唐</div>
         <div class="image-placeholder timeline-placeholder">
-  <span>初唐工艺占位</span>
-  <img src="images/early.jpg" alt="初唐工艺主图">
+  <img src="images/chutang.png" alt="初唐工艺主图">
 </div>
 
         <p>风格更清秀克制，线条与服饰尚保留着较为安静的秩序感。</p>
@@ -201,8 +264,7 @@
       <article class="timeline-card fade">
         <div class="timeline-era">盛唐</div>
        <div class="image-placeholder timeline-placeholder">
-  <span>盛唐妆造占位</span>
-  <img src="images/high-tang.jpg" alt="盛唐妆造主图">
+  <img src="images/shengtang.png" alt="盛唐妆造主图">
 </div>
 
         <p>审美逐渐丰盛，色彩、材质与体量都开始显露出更充沛的生命力。</p>
@@ -210,8 +272,7 @@
       <article class="timeline-card fade">
         <div class="timeline-era">中唐</div>
         <div class="image-placeholder timeline-placeholder">
-  <span>中唐礼仪占位</span>
-  <img src="images/mid-tang.jpg" alt="中唐礼仪主图">
+  <img src="images/zhongtang.png" alt="中唐礼仪主图">
 </div>
 
         <p>技艺与仪态趋向细腻，生活气质也更强调克制中的层次。</p>
@@ -219,8 +280,7 @@
       <article class="timeline-card fade">
         <div class="timeline-era">晚唐</div>
        <div class="image-placeholder timeline-placeholder">
-  <span>晚唐纹样占位</span>
-  <img src="images/late-tang.jpg" alt="晚唐纹样主图">
+  <img src="images/wantang.png" alt="晚唐纹样主图">
 </div>
 
         <p>时代余韵渐深，纹样与器饰承载了更复杂也更感性的情绪色泽。</p>
@@ -233,14 +293,15 @@
       <div class="small">AI Creation Desk</div>
       <h2 class="title">让非遗，不止于被保存</h2>
       <p class="text">
-      当用户理解了工艺，也应该看见它如何继续生成新的表达。这一段会把工坊从“学习”带向“创作”，让非遗真正进入当代内容生产。
+      技艺被传承下来，不只是为了被记住。
+
+它会融入新的设计、影像与创作，在不断变化的时代里继续讲述自己的故事。那些来自过去的灵感，也将在新的表达中获得新的生命力。
       </p>
     </div>
 
     <div class="creation-grid">
       <article class="creation-card fade">
         <div class="image-placeholder creation-placeholder">
-  <span>AI 文创海报生成占位</span>
   <img src="images/ai-poster.jpg" alt="AI 文创海报主图">
 </div>
 
@@ -249,7 +310,6 @@
       </article>
       <article class="creation-card fade">
         <div class="image-placeholder creation-placeholder">
-  <span>AI 短视频脚本生成占位</span>
   <img src="images/ai-video.jpg" alt="AI 短视频脚本主图">
 </div>
 
@@ -258,7 +318,6 @@
       </article>
       <article class="creation-card fade">
        <div class="image-placeholder creation-placeholder">
-  <span>AI 文化文案生成占位</span>
   <img src="images/ai-copy.jpg" alt="AI 文化文案主图">
 </div>
 
@@ -285,5 +344,6 @@
 </main>
 
 <script src="js/workshop.js"></script>
+<script src="js/common.js"></script>
 </body>
 </html>

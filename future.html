@@ -4,9 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>百工新生 · 唐姝驾到</title>
+<link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/future.css">
 </head>
 <body class="page-future">
+<div class="cursor-glow"></div>
 
 <nav class="nav">
 <ul>
@@ -30,8 +32,9 @@
     <div class="small">Future Craft Civilization</div>
     <h1>真正的传承，不是停留在过去，而是重新进入未来生活</h1>
     <p class="desc">
-      这一页不是文创商城，也不是工具后台。
-      它更像未来长安中的数字创意中心，让非遗从“被保护”走向“继续创造”，在新的媒介、空间与关系中重新生长。
+      故事走到这里，关注的已不只是如何保存一门手艺。
+
+那些流传至今的纹样、技法与审美，正在新的生活场景中继续延展。从被珍藏、被记录，到被重新使用、重新演绎，它们始终与当下保持着联系。
     </p>
     <div class="hero-actions">
       <a class="enter" href="#creation">开始创造</a>
@@ -45,8 +48,9 @@
     <div class="small">Creative Engine</div>
     <h2 class="title">让非遗拥有新的表达方式</h2>
     <p class="text">
-      这里不把 AI 做成冰冷工具列表，而是做成一座未来东方创作台。
-      文创海报、视频脚本与文化文案不只是自动生成结果，而是让非遗重新进入当代视觉和传播语境。
+      当技艺走出展柜，它也开始拥有更多讲述自己的方式。
+
+一段故事可以化作影像，一枚纹样可以成为新的设计，一份传承记忆也能够被重新书写。那些来自过去的灵感，在这里继续延展出新的模样。
     </p>
   </div>
 
@@ -57,11 +61,10 @@
       <button class="creator-tab" data-creator="copy">文化文案</button>
     </div>
 
-    <div class="creator-stage fade">
-      <article class="creator-panel active" data-panel="poster">
+<div class="creator-stage fade" id="creatorStage">
+        <article class="creator-panel active" data-panel="poster">
         <div class="creator-visual">
           <div class="image-placeholder creator-placeholder">
-            <span>未来东方海报生成主视觉占位</span>
             <img src="images/future-poster.jpg" alt="未来东方海报生成主视觉" style="width:100%;max-width:960px;height:auto;object-fit:cover;border-radius:30px;display:block;margin:0 auto;">
           </div>
           <div class="creator-tags">
@@ -86,7 +89,6 @@
       <article class="creator-panel" data-panel="script">
         <div class="creator-visual">
           <div class="image-placeholder creator-placeholder">
-            <span>短视频脚本生成主视觉占位</span>
             <img src="images/future-script.jpg" alt="短视频脚本生成主视觉" style="width:100%;max-width:960px;height:auto;object-fit:cover;border-radius:30px;display:block;margin:0 auto;">
           </div>
           <div class="creator-tags">
@@ -99,7 +101,9 @@
           <div class="creator-meta">AI Script Lab</div>
           <h3>让镜头、灯影与文案共同替技艺重新开口</h3>
           <p>
-            这一模块会把非遗从静态介绍，转译为更适合当代传播的动态叙事，包括镜头语言、情绪弧线与讲述方式。
+            同样一门手艺，换一种讲述方式，便会呈现出不同的风景。
+
+光影的变化、人物的停留与细节的展开，共同串联起一个完整的故事，让原本静止的记忆重新拥有流动的生命力。
           </p>
           <div class="creator-note">
             <p>自动生成分镜、运镜建议与旁白节奏。</p>
@@ -111,7 +115,6 @@
       <article class="creator-panel" data-panel="copy">
         <div class="creator-visual">
           <div class="image-placeholder creator-placeholder">
-            <span>文化文案生成主视觉占位</span>
             <img src="images/future-copy.jpg" alt="文化文案生成主视觉" style="width:100%;max-width:960px;height:auto;object-fit:cover;border-radius:30px;display:block;margin:0 auto;">
           </div>
           <div class="creator-tags">
@@ -134,6 +137,122 @@
       </article>
     </div>
   </div>
+  <script>
+
+/* ===== tabs ===== */
+
+const creatorTabs =
+  document.querySelectorAll(".creator-tab");
+
+const creatorPanels =
+  document.querySelectorAll(".creator-panel");
+
+/* ===== 点击切换 ===== */
+
+creatorTabs.forEach(tab => {
+
+  tab.addEventListener("click", () => {
+
+    const target =
+      tab.dataset.creator;
+
+    const currentPanel =
+      document.querySelector(
+        ".creator-panel.active"
+      );
+
+    const nextPanel =
+      document.querySelector(
+        `[data-panel="${target}"]`
+      );
+
+    if(currentPanel === nextPanel) return;
+
+    /* tabs */
+
+    creatorTabs.forEach(t =>
+      t.classList.remove("active")
+    );
+
+    tab.classList.add("active");
+
+    /* 当前离场 */
+
+    currentPanel.classList.add("leave");
+
+    /* 新页面进入 */
+
+    nextPanel.classList.add("enter");
+
+    /* 强制刷新 */
+
+    void nextPanel.offsetWidth;
+
+    /* 激活 */
+
+    nextPanel.classList.add("active");
+
+    /* 下一帧 */
+
+    requestAnimationFrame(() => {
+
+      nextPanel.classList.remove(
+        "enter"
+      );
+
+    });
+
+    /* 清理 */
+
+    setTimeout(() => {
+
+      currentPanel.classList.remove(
+        "active",
+        "leave"
+      );
+
+    }, 1000);
+
+  });
+
+});
+
+function updateCreatorHeight(){
+
+  const activePanel =
+    document.querySelector(
+      ".creator-panel.active"
+    );
+
+  const stage =
+    document.getElementById(
+      "creatorStage"
+    );
+
+  if(activePanel){
+
+    stage.style.height =
+      activePanel.offsetHeight + "px";
+
+  }
+
+}
+
+/* ===== 初始化 ===== */
+
+window.addEventListener(
+  "load",
+  updateCreatorHeight
+);
+
+window.addEventListener(
+  "resize",
+  updateCreatorHeight
+);
+nextPanel.classList.add("active");
+
+updateCreatorHeight();
+</script>
 </section>
 
 <section class="section showcase-section fade">
@@ -148,7 +267,6 @@
   <div class="showcase-grid">
     <article class="showcase-card fade">
       <div class="image-placeholder showcase-placeholder">
-        <span>唐风首饰占位</span>
         <img src="images/showcase-jewelry.jpg" alt="唐风首饰" style="width: 350px; height: 300px;">
       </div>
       <h3>唐风首饰</h3>
@@ -156,7 +274,6 @@
     </article>
     <article class="showcase-card fade">
       <div class="image-placeholder showcase-placeholder">
-        <span>AI 生成纹样占位</span>
         <img src="images/showcase-pattern.jpg" alt="AI 生成纹样" style="width: 350px; height: 300px;">
       </div>
       <h3>AI 生成纹样</h3>
@@ -164,7 +281,6 @@
     </article>
     <article class="showcase-card fade">
       <div class="image-placeholder showcase-placeholder">
-        <span>数字刺绣文创占位</span>
         <img src="images/showcase-embroidery.jpg" alt="数字刺绣文创" style="width: 350px; height: 300px;">
       </div>
       <h3>数字刺绣</h3>
@@ -178,21 +294,41 @@
     <div class="small">Future Chang'an</div>
     <h2 class="title">当非遗重新进入城市，未来长安便不再只是想象</h2>
     <p class="text">
-      这一段是整页的视觉高潮。它想表达的不是一个赛博朋克城市，而是一座仍保留东方气质、同时允许技艺和数字文明共同存在的未来长安。
+      这里的长安并未远去。
+
+熟悉的纹样、灯影与街市气息仍然留存在城市之中，只是以新的面貌继续生长。过去与未来在同一片屋檐下相遇，让技艺、生活与想象拥有了更多延展的可能。
     </p>
   </div>
 
-  <div class="city-shell">
-   <div class="city-scene fade">
-  <div class="image-placeholder city-placeholder">
-    <img src="images/future-city.jpg" 
-         alt="未来长安数字文明场景" 
-         style="width: 800px;;height: 100%;;object-fit:cover;border-radius:34px;">
-    <span>未来长安数字文明场景占位</span>
+  <div class="city-shell" style="display:flex;align-items:center;gap:24px;">
+
+  <!-- 左侧图片 -->
+  <div class="city-scene fade" style="flex:1;">
+    <div class="image-placeholder city-placeholder">
+      <img src="images/future-city.png" 
+           alt="未来长安数字文明场景" 
+           style="width: 100%; height: 100%; object-fit: cover; border-radius: 34px;">
+    </div>
   </div>
-</div>
+
+  <!-- 右侧文本区域 -->
+  <div class="city-text" style="flex:1; color:#fff; font-size:20px; line-height:1.6;">
+    <h2 style="margin:0 0 12px 0; font-size:28px; font-weight:600;">
+      未来东方数字文明
+    </h2>
+    <p style="margin:0 0 10px 0;">
+      在数字丝路与东方美学交织的未来长安，文化不再静止，而是以数据的方式重新生长。
+    </p>
+    <p style="margin:0 0 10px 0;">
+      非遗纹样、唐风建筑、数字人传承者共同构成一座可触摸、可漫游、可对话的文明空间。
+    </p>
+    <p style="margin:0;">
+      这里的每一次点亮，都是传统与科技的再次相遇。
+    </p>
+  </div>
 
 </div>
+
 
     </div>
     <div class="city-copy fade">
@@ -200,5 +336,6 @@
 </main>
 
 <script src="js/future.js"></script>
+<script src="js/common.js"></script>
 </body>
 </html>

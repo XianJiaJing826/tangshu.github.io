@@ -142,3 +142,17 @@ setupRevealObserver();
 setupPageTransition();
 setupAnchorScroll();
 setupPracticeTabs();
+// 鼠标跟踪高光
+const glow = document.querySelector('.cursor-glow');
+let glowTimeout;
+
+document.addEventListener('mousemove', e => {
+  glow.style.left = `${e.clientX}px`;
+  glow.style.top = `${e.clientY}px`;
+  glow.style.opacity = 1;
+
+  clearTimeout(glowTimeout);
+  glowTimeout = setTimeout(() => {
+    glow.style.opacity = 0;
+  }, 1800); // 停止 1.8 秒后淡出
+});

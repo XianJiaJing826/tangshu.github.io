@@ -1,3 +1,333 @@
+.creator-stage{
+  position: relative;
+
+  overflow: hidden;
+
+  margin-top: 60px;
+
+  width: 100%;
+}
+
+.creator-placeholder img{
+  width: 100%;
+  height: auto;
+
+  display: block;
+
+  object-fit: cover;
+
+  transform: scale(1.08);
+
+  filter:
+    brightness(.84)
+    saturate(1.08);
+
+  transition:
+    transform 2s ease,
+    filter 1.5s ease;
+}
+.creator-panel{
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: auto;
+
+  display: flex;
+  gap: 70px;
+
+  align-items: flex-start;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transform:
+    translateX(120px)
+    scale(.95)
+    rotateY(-8deg);
+
+  filter:
+    blur(18px);
+
+  transition:
+    transform 1s cubic-bezier(.22,.61,.36,1),
+    opacity .9s ease,
+    filter .9s ease;
+}
+
+/* ===== 当前 ===== */
+
+.creator-panel.active{
+  opacity: 1;
+  pointer-events: auto;
+
+  transform:
+    translateX(0)
+    scale(1)
+    rotateY(0);
+
+  filter:
+    blur(0);
+
+  z-index: 3;
+}
+
+/* ===== 离场 ===== */
+
+.creator-panel.leave{
+  opacity: 0;
+
+  transform:
+    translateX(-180px)
+    scale(.92)
+    rotateY(10deg);
+
+  filter:
+    blur(24px);
+
+  z-index: 1;
+}
+
+/* ===== 进入 ===== */
+
+.creator-panel.enter{
+  opacity: 0;
+
+  transform:
+    translateX(180px)
+    scale(.94)
+    rotateY(-10deg);
+
+  filter:
+    blur(20px);
+}
+
+/* ===== 左侧视觉 ===== */
+
+.creator-visual{
+  width: 58%;
+
+  position: relative;
+}
+
+/* 图片容器 */
+
+.creator-placeholder{
+  overflow: hidden;
+
+  border-radius: 34px;
+
+  position: relative;
+}
+
+/* 图片 */
+
+.creator-placeholder img{
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transform: scale(1.08);
+
+  filter:
+    brightness(.84)
+    saturate(1.08);
+
+  transition:
+    transform 2s ease,
+    filter 1.5s ease;
+}
+
+/* 当前激活 */
+
+.creator-panel.active .creator-placeholder img{
+  transform: scale(1);
+
+  filter:
+    brightness(1)
+    saturate(1.12);
+}
+
+/* ===== 右侧文案 ===== */
+
+.creator-copy{
+  flex: 1;
+}
+
+/* meta */
+
+.creator-meta{
+  font-size: 13px;
+  letter-spacing: 4px;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(212,175,55,.75);
+
+  margin-bottom: 24px;
+}
+
+/* 标题 */
+
+.creator-copy h3{
+  font-size: 42px;
+  line-height: 1.5;
+
+  margin-bottom: 28px;
+}
+
+/* 正文 */
+
+.creator-copy p{
+  line-height: 2;
+
+  color:
+    rgba(255,255,255,.72);
+
+  margin-bottom: 24px;
+}
+
+/* ===== 标签 ===== */
+
+.creator-tags{
+  position: absolute;
+
+  left: 30px;
+  bottom: 30px;
+
+  display: flex;
+  gap: 14px;
+
+  flex-wrap: wrap;
+}
+
+.creator-tags span{
+  padding:
+    10px 18px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(0,0,0,.45);
+
+  border:
+    1px solid rgba(255,255,255,.08);
+
+  backdrop-filter:
+    blur(12px);
+
+  font-size: 13px;
+
+  color:
+    rgba(255,255,255,.88);
+}
+
+/* ===== note ===== */
+
+.creator-note{
+  margin-top: 30px;
+
+  padding: 28px;
+
+  border-radius: 28px;
+
+  background:
+    rgba(255,255,255,.03);
+
+  border:
+    1px solid rgba(255,255,255,.06);
+
+  backdrop-filter:
+    blur(12px);
+}
+
+/* ===== tabs ===== */
+
+.creator-tabs{
+  display: flex;
+  gap: 16px;
+
+  flex-wrap: wrap;
+}
+
+/* tab */
+
+.creator-tab{
+  position: relative;
+
+  padding:
+    14px 28px;
+
+  border-radius: 999px;
+
+  border:
+    1px solid rgba(255,255,255,.08);
+
+  background:
+    rgba(255,255,255,.03);
+
+  color: #fff;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  transition:
+    transform .3s ease,
+    background .4s ease,
+    border-color .4s ease;
+}
+
+/* hover */
+
+.creator-tab:hover{
+  transform: translateY(-2px);
+}
+
+/* 当前 */
+
+.creator-tab.active{
+  background:
+    rgba(212,175,55,.14);
+
+  border-color:
+    rgba(212,175,55,.35);
+
+  color:
+    #f6d365;
+}
+
+/* 金色流光 */
+
+.creator-tab::after{
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      120deg,
+      transparent,
+      rgba(255,255,255,.22),
+      transparent
+    );
+
+  transform:
+    translateX(-120%);
+
+  transition:
+    transform .9s ease;
+}
+
+.creator-tab.active::after{
+  transform:
+    translateX(120%);
+}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:120px;-ms-overflow-style:none;scrollbar-width:none}
 html::-webkit-scrollbar,body::-webkit-scrollbar{display:none}
@@ -28,6 +358,21 @@ a:focus-visible,button:focus-visible{
 outline:1px solid rgba(198,168,106,.72);
 outline-offset:4px;
 }
+
+/* 鼠标跟踪高光效果 */
+.cursor-glow{
+position:fixed;
+width:500px;
+height:500px;
+background:radial-gradient(circle,rgba(198,168,106,0.1),transparent 65%);
+pointer-events:none;
+z-index:0;
+filter:blur(50px);
+transform:translate(-50%,-50%);
+transition:opacity 0.3s ease;
+opacity:0;
+}
+
 body::before{
 content:"";
 position:fixed;
@@ -46,27 +391,42 @@ backdrop-filter:blur(2px);
 pointer-events:none;
 z-index:-2;
 }
-.nav{
-position:fixed;
-top:20px;
-left:50%;
-transform:translateX(-50%);
-padding:18px 30px;
-border-radius:999px;
-background:rgba(8,20,18,.34);
-border:1px solid rgba(198,168,106,.2);
-backdrop-filter:blur(18px);
-box-shadow:0 20px 60px rgba(0,0,0,.18);
-z-index:999;
+.nav {
+  display: flex;          /* 让导航栏成为可居中的 flex 容器 */
+  justify-content: center;/* 让导航栏内容居中 */
+  width: 100%;            /* 让导航栏占满宽度，才能真正居中 */
+  margin-top: 40px;
 }
-.nav ul{display:flex;gap:26px;list-style:none}
-.nav a{
-color:#C6A86A;
-letter-spacing:.22em;
-font-size:13px;
-transition:.5s;
+
+
+.nav ul {
+  background-color: rgba(0, 20, 10, 0.8);
+  border: 1px solid #a08b4c;
+  border-radius: 40px;
+  padding: 10px 40px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
 }
-.nav a.active,.nav a:hover{color:#fff}
+
+
+.nav a {
+  color: #d8c27a;
+  font-size: 18px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav a:hover {
+  color: #fff;
+}
+
+.nav a.active {
+  color: #fff;
+  font-weight: bold;
+}
+
 .hero{
 min-height:100vh;
 display:flex;
@@ -540,3 +900,4 @@ filter:none;
 transform:none;
 }
 }
+

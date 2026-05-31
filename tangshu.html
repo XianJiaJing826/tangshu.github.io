@@ -4,13 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>唐姝同行 · 唐姝驾到</title>
+<link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/tangshu.css">
 </head>
 <body class="page-tangshu">
+<!-- 鼠标跟随高光 -->
+<div class="cursor-glow"></div>
 
 <nav class="nav">
 <ul>
-<li><a class="active" href="index.html">入长安</a></li>
+<li><a href="index.html">入长安</a></li>
 <li><a href="heritage.html">观非遗</a></li>
 <li><a href="workshop.html">沉浸研习</a></li>
 <li><a class="active" href="tangshu.html">唐姝同行</a></li>
@@ -30,8 +33,7 @@
       <div class="hero-figure fade">
         <div class="figure-halo"></div>
         <div class="image-placeholder figure-placeholder">
-          <span>唐姝数字人全身像占位</span>
-          <img src="images/9.png "alt="唐姝数字人全身像">
+          <img src="images/9.png" alt="唐姝数字人全身像">
         </div>
       </div>
 
@@ -78,7 +80,6 @@
       <div class="memory-stage fade">
         <article class="memory-panel active" data-panel="story">
           <div class="image-placeholder memory-placeholder">
-            <span>唐代女性故事主视觉占位</span>
             <img src="images/memory-story.jpg" alt="唐代女性故事主视觉">
           </div>
           <div class="memory-copy">
@@ -92,7 +93,6 @@
 
         <article class="memory-panel" data-panel="craft">
           <div class="image-placeholder memory-placeholder">
-            <span>手工艺片段主视觉占位</span>
             <img src="images/memory-craft.jpg" alt="手工艺片段主视觉">
           </div>
           <div class="memory-copy">
@@ -107,8 +107,7 @@
 
         <article class="memory-panel" data-panel="ritual">
           <div class="image-placeholder memory-placeholder">
-            <span>礼仪妆造主视觉占位</span>
-            <img src="C:\Users\lishuang\Desktop\assets\images\tang-makeup.jpg" alt="礼仪妆造主视觉">
+            <img src="images/tang-makeup.jpg" alt="礼仪妆造主视觉">
           </div>
           <div class="memory-copy">
             <div class="memory-meta">Ritual Aesthetics</div>
@@ -121,7 +120,6 @@
 
         <article class="memory-panel" data-panel="poetry">
           <div class="image-placeholder memory-placeholder">
-            <span>唐诗意象主视觉占位</span>
             <img src="images/memory-poetry.jpg" alt="唐诗意象主视觉">
           </div>
           <div class="memory-copy">
@@ -135,7 +133,6 @@
 
         <article class="memory-panel" data-panel="inherit">
           <div class="image-placeholder memory-placeholder">
-            <span>传承人口述主视觉占位</span>
             <img src="images/memory-inherit.jpg" alt="传承人口述主视觉">
           </div>
           <div class="memory-copy">
@@ -150,54 +147,108 @@
     </div>
   </section>
 
-  <section class="section dialogue-section fade" id="dialogue">
-    <div class="section-head">
-      <div class="small">Face To Face</div>
-      <h2 class="title">这不是聊天框，而是一场面对面的同行</h2>
-      <p class="text">
-      这里先用原生结构做出会客厅式对话空间。后续你如果接入真实对话能力，可以直接在这个框架里替换为真实消息流或交互入口。
-      </p>
-    </div>
 
-    <div class="dialogue-shell">
-      <div class="dialogue-figure fade">
-        <div class="image-placeholder dialogue-portrait">
-          <span>唐姝半身像占位</span>
-          <img src="images/dialogue-portrait.jpg" alt="唐姝半身像">
-        </div>
+
+<section class="section dialogue-section fade" id="dialogue">
+
+  <div class="section-head">
+    <div class="small">Face To Face</div>
+
+    <h2 class="title">
+      这不是聊天框，而是一场面对面的同行
+    </h2>
+
+    <p class="text">
+      点击不同非遗主题，进入对应研习空间。
+    </p>
+  </div>
+
+  <div class="dialogue-shell">
+
+    <!-- 左侧图片区 -->
+
+    <div class="dialogue-figure fade">
+
+      <div class="image-placeholder dialogue-portrait">
+
+        <img id="dialogueImage" src="images/dialogue-portrait.jpg" alt="蹙金绣" >
+
       </div>
 
-      <div class="dialogue-stage fade">
-        <div class="dialogue-tabs">
-          <button class="dialogue-tab active" data-dialogue="embroidery">蹙金绣</button>
-          <button class="dialogue-tab" data-dialogue="makeup">花钿妆</button>
-          <button class="dialogue-tab" data-dialogue="incense">香艺</button>
-        </div>
+    </div>
 
-        <div class="dialogue-card">
-          <div class="dialogue-user">
-            <span class="bubble-label">用户</span>
-            <p id="user-line">什么是蹙金绣？</p>
-          </div>
-          <div class="dialogue-ai">
-            <span class="bubble-label">唐姝</span>
-            <div id="ai-lines">
-              <p>蹙金者，以金线隐入丝纹之间。</p>
-              <p>灯火之下，方见流光。</p>
-              <p>它不是张扬地发亮，而是在靠近时才慢慢显露出分寸。</p>
-            </div>
-          </div>
-        </div>
+    <!-- 右侧内容区 -->
+
+   <div class="dialogue-stage fade">
+  <div class="dialogue-tabs">
+    <button class="dialogue-tab active" data-dialogue="embroidery">蹙金绣</button>
+    <button class="dialogue-tab" data-dialogue="makeup">花钿妆</button>
+    <button class="dialogue-tab" data-dialogue="incense">香艺</button>
+  </div>
+
+ <div class="dialogue-stage fade">
+
+  <!-- Tabs -->
+  
+
+  <!-- Card -->
+  <div class="dialogue-card">
+
+    <!-- 蹙金绣 -->
+    <div class="dialogue-content" id="embroidery">
+      <div class="message from-tangshu">
+        <p>蹙金绣，是唐代最华贵的刺绣工艺之一。金线在丝绸上流动，如光在水面跳跃。</p >
+      </div>
+      <div class="message from-tangshu">
+        <p>你想了解针法、纹样，还是金线的制作？我都可以告诉你。</p >
       </div>
     </div>
-  </section>
+
+    <!-- 花钿妆 -->
+    <div class="dialogue-content" id="makeup" style="display:none;">
+      <div class="message from-tangshu">
+        <p>花钿妆，是唐代女子额间最具代表性的装饰。金箔、宝石、花形贴饰，象征富贵与吉祥。</p >
+      </div>
+      <div class="message from-tangshu">
+        <p>你想听我讲花钿的制作、佩戴方式，还是不同形制的寓意？我都可以慢慢说给你听。</p >
+      </div>
+    </div>
+
+    <!-- 香艺 -->
+    <div class="dialogue-content" id="incense" style="display:none;">
+      <div class="message from-tangshu">
+        <p>香艺，是唐人生活美学的灵魂。焚香静心、以香寄情，是贵族与文人共同的雅趣。</p >
+      </div>
+      <div class="message from-tangshu">
+        <p>你想了解香料、香方、香具，还是唐代的焚香礼仪？我都可以告诉你。</p >
+      </div>
+    </div>
+
+    <!-- Input -->
+    <div class="dialogue-input-area">
+      <textarea id="dialogueInput" placeholder="与唐姝对话……"></textarea>
+      <button id="sendBtn">发送</button>
+    </div>
+
+  </div>
+</div>
+
+
+
+</div>
+
+  </div>
+
+</section>
 
   <section class="section scene-section fade">
     <div class="section-head">
       <div class="small">Emotional Spaces</div>
       <h2 class="title">与唐姝同行时，空间也会随情绪缓慢变化</h2>
       <p class="text">
-      这一段更像数字电影的场景切换。用户不是在换页面，而像被带到不同的会客空间里，看同一个人格如何在不同情绪下继续陪伴讲述。
+      脚步向前，眼前的景致也会随之变化。
+
+有时是妆阁里的纱幔与镜台，有时是绣架旁的灯火与丝线，有时又走进香气萦绕的静谧一隅。不同的空间承载着不同的故事，而陪伴始终未曾离开。
       </p>
     </div>
 
@@ -209,10 +260,9 @@
         <button class="scene-tab" data-scene="incense">香艺空间</button>
       </div>
 
-      <div class="scene-stage fade">
-        <article class="scene-panel active" data-scene-panel="boudoir">
+<div class="scene-stage fade" id="sceneStage">        
+  <article class="scene-panel active" data-scene-panel="boudoir">
           <div class="image-placeholder scene-placeholder">
-            <span>唐代妆阁场景占位</span>
             <img src="images/scene-boudoir.jpg" alt="唐代妆阁场景">
           </div>
           <div class="scene-copy">
@@ -223,7 +273,6 @@
 
         <article class="scene-panel" data-scene-panel="workroom">
           <div class="image-placeholder scene-placeholder">
-            <span>刺绣工坊场景占位</span>
             <img src="images/scene-workroom.jpg" alt="刺绣工坊场景">
           </div>
           <div class="scene-copy">
@@ -234,7 +283,6 @@
 
         <article class="scene-panel" data-scene-panel="banquet">
           <div class="image-placeholder scene-placeholder">
-            <span>夜宴灯火场景占位</span>
             <img src="images/scene-banquet.jpg" alt="夜宴灯火场景">
           </div>
           <div class="scene-copy">
@@ -245,7 +293,6 @@
 
         <article class="scene-panel" data-scene-panel="incense">
           <div class="image-placeholder scene-placeholder">
-            <span>香艺空间场景占位</span>
             <img src="images/scene-incense.jpg" alt="香艺空间场景">
           </div>
           <div class="scene-copy">
@@ -255,6 +302,7 @@
         </article>
       </div>
     </div>
+    
   </section>
 
   <section class="section growth-section fade">
@@ -306,5 +354,6 @@
 </main>
 
 <script src="js/tangshu.js"></script>
+<script src="js/common.js"></script>
 </body>
 </html>

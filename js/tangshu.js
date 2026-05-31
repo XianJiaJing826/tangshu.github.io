@@ -143,7 +143,7 @@ const entry = dialogueCopy[key];
 if(!entry) return;
 
 userLine.textContent = entry.user;
-aiLines.innerHTML = entry.ai.map(line=>`<p>${line}</p>`).join('');
+aiLines.innerHTML = entry.ai.map(line=>`<p>${line}</p >`).join('');
 };
 
 dialogueTabs.forEach(tab=>{
@@ -190,3 +190,57 @@ setupAnchorScroll();
 setupMemoryShards();
 setupDialogueTabs();
 setupSceneTabs();
+// 鼠标跟踪高光
+const glow = document.querySelector('.cursor-glow');
+let glowTimeout;
+
+document.addEventListener('mousemove', e => {
+  glow.style.left = `${e.clientX}px`;
+  glow.style.top = `${e.clientY}px`;
+  glow.style.opacity = 1;
+
+  clearTimeout(glowTimeout);
+  glowTimeout = setTimeout(() => {
+    glow.style.opacity = 0;
+  }, 1800); // 停止 1.8 秒后淡出
+});
+const tabs = document.querySelectorAll(".dialogue-tab");
+const contents = document.querySelectorAll(".dialogue-content");
+
+tabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    // 切换 tab 样式
+    tabs.forEach(t => t.classList.remove("active"));
+    tab.classList.add("active");
+
+    // 切换内容
+    const target = tab.dataset.dialogue;
+    contents.forEach(c => {
+      c.style.display = c.id === target ? "block" : "none";
+    });
+  });
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const shards = document.querySelectorAll(".memory-shard");
+  const panels = document.querySelectorAll(".memory-panel");
+
+  shards.forEach(shard => {
+    shard.addEventListener("click", () => {
+      // 移除所有按钮的 active 状态
+      shards.forEach(btn => btn.classList.remove("active"));
+      // 当前按钮高亮
+      shard.classList.add("active");
+
+      // 获取对应面板
+      const target = shard.dataset.memory;
+
+      panels.forEach(panel => {
+        if (panel.dataset.panel === target) {
+          panel.classList.add("active");
+        } else {
+          panel.classList.remove("active");
+        }
+      });
+    });
+  });
+});
