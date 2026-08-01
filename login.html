@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登录 · 唐姝</title>
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64.png">
+</head>
+
+<body>
+
+  <!-- ====== Fixed Parallax Background ====== -->
+  <div id="parallax-bg">
+    <div id="parallax-bg-lit"></div>
+  </div>
+
+  <!-- ====== Top Navigation Bar ====== -->
+  <nav id="top-nav">
+    <div class="nav-items">
+      <a href="index.html" class="nav-item">HOME</a>
+    </div>
+  </nav>
+
+  <!-- ====== Logo (fixed, top-left) ====== -->
+  <img id="logo" src="images/tangshu/tangshuwenzilogo.png" alt="唐姝">
+
+  <!-- ====== Login Wrapper ====== -->
+  <div class="login-wrapper">
+    <div class="login-card">
+
+      <!-- Header -->
+      <div class="login-header">
+        <h1 class="login-title">登录</h1>
+        <p class="login-subtitle">Tang Shu</p>
+      </div>
+
+      <!-- Form -->
+      <form class="login-form" id="login-form" novalidate>
+
+        <!-- Email / Username -->
+        <div class="input-group">
+          <label class="input-label" for="email">邮箱 / 用户名</label>
+          <input
+            type="text"
+            id="email"
+            class="input-field"
+            placeholder="输入邮箱或用户名"
+            autocomplete="username"
+          >
+          <span class="error-message" id="email-error">请输入邮箱或用户名</span>
+        </div>
+
+        <!-- Password -->
+        <div class="input-group">
+          <label class="input-label" for="password">密码</label>
+          <div class="password-wrapper">
+            <input
+              type="password"
+              id="password"
+              class="input-field"
+              placeholder="输入密码"
+              autocomplete="current-password"
+            >
+            <button type="button" class="btn-toggle-password" id="btn-toggle-password" aria-label="切换密码可见性">
+              👁
+            </button>
+          </div>
+          <span class="error-message" id="password-error">请输入密码</span>
+        </div>
+
+        <!-- Remember + Forgot -->
+        <div class="form-row">
+          <label class="checkbox-group">
+            <input type="checkbox" id="remember">
+            <span class="checkbox-label">记住我</span>
+          </label>
+          <a href="#" class="link-forgot">忘记密码？</a>
+        </div>
+
+        <!-- Login Button -->
+        <button type="submit" class="btn-login" id="btn-login">登录</button>
+
+      </form>
+
+      <!-- Register Link -->
+      <p class="register-hint">
+        没有账号？<a href="#" class="link-register">注册</a>
+      </p>
+
+    </div>
+  </div>
+
+  <!-- ====== Toast Notification ====== -->
+  <div class="toast" id="toast"></div>
+
+  <!-- ====== Back to Top Button ====== -->
+  <button id="back-to-top" aria-label="返回顶部">
+    <svg viewBox="0 0 24 24" width="20" height="20">
+      <polyline points="17 14 12 9 7 14" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="square" />
+    </svg>
+  </button>
+
+  <script src="js/login.js"></script>
+</body>
+
+</html>

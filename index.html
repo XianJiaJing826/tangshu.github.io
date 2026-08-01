@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>唐姝</title>
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64.png">
+</head>
+
+<body>
+
+  <!-- ====== Fixed Parallax Background (stays in place) ====== -->
+  <div id="parallax-bg">
+    <div id="parallax-bg-lit"></div>
+  </div>
+
+  <!-- ====== Scrolling Content ====== -->
+  <div id="content-wrapper">
+
+    <!-- Screen 1 -->
+    <section id="screen-1">
+    </section>
+
+    <!-- Screen 2 -->
+    <section id="screen-2">
+
+      <div class="screen-2-content">
+
+        <!-- Top: Core Info -->
+        <div class="info-section">
+          <h2 class="info-title-en">Digital Culture</h2>
+          <p class="info-subtitle">当千年文化，遇见数字时代</p>
+          <p class="info-body">文化从来不是静止的。它在一针一线之间传递，在每一次讲述中被重新理解。<br>今天，我们以数字的方式，再次打开唐代的大门。</p>
+        </div>
+
+        <!-- Middle: Cards Carousel -->
+        <div class="cards-section">
+          <div class="cards-viewport">
+            <div class="cards-track" id="cards-track">
+              <!-- 5 original cards -->
+              <div class="card"><img src="images/landing/dynasty/dynasty-early-tang.webp" alt=""></div>
+              <div class="card"><img src="images/landing/crafts/embroidery-main.webp" alt=""></div>
+              <div class="card"><img src="images/landing/scenes/scene-banquet.webp" alt=""></div>
+              <div class="card"><img src="images/landing/ai/ai-culture.webp" alt=""></div>
+              <div class="card"><img src="images/landing/future/future-poster.webp" alt=""></div>
+              <!-- 5 duplicate cards for seamless loop -->
+              <div class="card"><img src="images/landing/dynasty/dynasty-early-tang.webp" alt=""></div>
+              <div class="card"><img src="images/landing/crafts/embroidery-main.webp" alt=""></div>
+              <div class="card"><img src="images/landing/scenes/scene-banquet.webp" alt=""></div>
+              <div class="card"><img src="images/landing/ai/ai-culture.webp" alt=""></div>
+              <div class="card"><img src="images/landing/future/future-poster.webp" alt=""></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ====== Video Preview (lower half) ====== -->
+      <div class="video-preview" id="video-preview">
+        <img class="video-preview-bg" src="images/video/bg1_00_00_00-00_00_30.gif" alt="">
+        <div class="play-btn-wrapper">
+          <div class="play-btn-container" id="play-btn">
+
+            <!-- Outer: Circular text ring (SVG) -->
+            <svg class="play-btn-text-ring" viewBox="0 0 140 140">
+              <defs>
+                <path id="text-circle-path" d="M 70,70 m -56,0 a 56,56 0 1,1 112,0 a 56,56 0 1,1 -112,0" />
+              </defs>
+              <text fill="#fff" font-family="'Helvetica Neue', Arial, sans-serif" font-size="9.5" font-weight="700"
+                letter-spacing="3.5">
+                <textPath href="#text-circle-path" startOffset="0%">
+                  PLAY · WATCH · 唐姝 · DISCOVER · PLAY ·
+                </textPath>
+              </text>
+            </svg>
+
+            <!-- Middle: White ring -->
+            <div class="play-btn-ring"></div>
+
+            <!-- Core: Dark circle + play triangle -->
+            <div class="play-btn-core">
+              <div class="play-btn-triangle"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Screen 3 -->
+    <section id="screen-3">
+
+      <div class="screen-3-content">
+
+        <!-- Top: Info -->
+        <div class="info-section">
+          <h2 class="info-title-en">AI &times; Tang</h2>
+          <p class="info-subtitle">数字时代的文化传承</p>
+          <p class="info-body">人工智能不只是技术。当它与千年文化相遇，生成的不只是数据<br>——而是新的理解、新的故事、新的可能。</p>
+        </div>
+
+        <!-- Middle: Main Visual -->
+        <div class="ai-gallery">
+          <div class="main-image-container" id="main-image-container">
+            <img class="main-image-img front" id="main-img-front" src="images/landing/ai/ai-poster.webp" alt="">
+            <img class="main-image-img back" id="main-img-back" src="" alt="">
+          </div>
+
+          <!-- Thumbnails Row -->
+          <div class="thumbnails-row" id="thumbnails-row">
+            <div class="thumb" data-full="images/landing/ai/ai-poster.webp">
+              <img src="images/landing/ai/ai-poster.webp" alt="">
+            </div>
+            <div class="thumb" data-full="images/landing/ai/ai-copy.webp">
+              <img src="images/landing/ai/ai-copy.webp" alt="">
+            </div>
+            <div class="thumb" data-full="images/landing/ai/ai-culture.webp">
+              <img src="images/landing/ai/ai-culture.webp" alt="">
+            </div>
+            <div class="thumb" data-full="images/landing/ai/ai-persona.webp">
+              <img src="images/landing/ai/ai-persona.webp" alt="">
+            </div>
+            <div class="thumb" data-full="images/landing/ai/ai-video.webp">
+              <img src="images/landing/ai/ai-video.webp" alt="">
+            </div>
+            <div class="thumb" data-full="images/landing/ai/micro-main.webp">
+              <img src="images/landing/ai/micro-main.webp" alt="">
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom: Description -->
+        <div class="ai-description">
+          <p>当人工智能的算法与唐代美学的密码相互碰撞，千年之前的针线、纹样、器皿与诗句，在数字世界中重新获得了呼吸。</p>
+          <p>这不是简单的复制与还原。每一次生成，都是对文化的重新解读；每一帧画面，都是古今之间的一次对话。AI 从庞大的数据中学习唐代的审美逻辑，然后以自己的方式，重新讲述那些被时间尘封的故事。</p>
+          <p>在这里，技术不再是冰冷的工具。它是连接过去与未来的桥梁，是让沉睡千年的文化遗产在当代语境中重新发声的媒介。</p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Screen 4 -->
+    <section id="screen-4">
+
+      <div class="screen-4-content">
+
+        <!-- Top: Info -->
+        <div class="info-section">
+          <h2 class="info-title-en">Timeline</h2>
+          <p class="info-subtitle">唐代时间轴</p>
+          <p class="info-body">从初唐到晚唐，二百八十九年。四个时期，八次驻足。</p>
+        </div>
+
+        <!-- Card Grid: 3×2 -->
+        <div class="timeline-grid">
+
+          <div class="dynasty-card" data-story="0">
+            <div class="card-image">
+              <img src="images/landing/dynasty/dynasty-early-tang.webp" alt="">
+            </div>
+            <div class="card-bar">
+              <span class="card-title">初唐气象</span>
+              <span class="card-btn">&gt;</span>
+            </div>
+          </div>
+
+          <div class="dynasty-card" data-story="1">
+            <div class="card-image">
+              <img src="images/landing/dynasty/dynasty-early-tang-alt.webp" alt="">
+            </div>
+            <div class="card-bar">
+              <span class="card-title">贞观之治</span>
+              <span class="card-btn">&gt;</span>
+            </div>
+          </div>
+
+          <div class="dynasty-card" data-story="2">
+            <div class="card-image">
+              <img src="images/landing/dynasty/dynasty-mid-tang.webp" alt="">
+            </div>
+            <div class="card-bar">
+              <span class="card-title">武周革命</span>
+              <span class="card-btn">&gt;</span>
+            </div>
+          </div>
+
+          <div class="dynasty-card" data-story="3">
+            <div class="card-image">
+              <img src="images/landing/dynasty/dynasty-high-tang.webp" alt="">
+            </div>
+            <div class="card-bar">
+              <span class="card-title">开元盛世</span>
+              <span class="card-btn">&gt;</span>
+            </div>
+          </div>
+
+          <div class="dynasty-card" data-story="4">
+            <div class="card-image">
+              <img src="images/landing/dynasty/dynasty-mid-tang-alt.webp" alt="">
+            </div>
+            <div class="card-bar">
+              <span class="card-title">安史之乱</span>
+              <span class="card-btn">&gt;</span>
+            </div>
+          </div>
+
+          <div class="dynasty-card" data-story="5">
+            <div class="card-image">
+              <img src="images/landing/dynasty/dynasty-late-tang.webp" alt="">
+            </div>
+            <div class="card-bar">
+              <span class="card-title">落日余晖</span>
+              <span class="card-btn">&gt;</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Screen 5 -->
+    <section id="screen-5">
+
+      <div class="screen-5-content">
+
+        <!-- Top: Info -->
+        <div class="info-section">
+          <h2 class="info-title-en">Crafts</h2>
+          <p class="info-subtitle">手工艺</p>
+          <p class="info-body">每一针、每一线、每一缕烟——都是时间留下的织物。</p>
+        </div>
+
+        <!-- 1. Embroidery 刺绣 -->
+        <div class="craft-section">
+          <div class="craft-header">
+            <span class="craft-title-en">Embroidery</span>
+            <span class="craft-title-cn">刺绣</span>
+          </div>
+          <div class="craft-carousel">
+            <div class="craft-track scroll-left">
+              <div class="craft-card"><img src="images/landing/crafts/embroidery-main.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/embroidery-closeup.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/embroidery-cujin.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/embroidery-fiber.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/embroidery-gold.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/embroidery-stitch.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/embroidery-workshop.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/embroidery-main.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/embroidery-closeup.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/embroidery-cujin.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/embroidery-fiber.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/embroidery-gold.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/embroidery-stitch.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/embroidery-workshop.webp" alt=""></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Incense 香道 -->
+        <div class="craft-section">
+          <div class="craft-header">
+            <span class="craft-title-en">Incense</span>
+            <span class="craft-title-cn">香道</span>
+          </div>
+          <div class="craft-carousel">
+            <div class="craft-track scroll-right">
+              <div class="craft-card"><img src="images/landing/crafts/incense-art.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/incense-smoke.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/incense-space.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/incense-vessel.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/incense-art.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/incense-smoke.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/incense-space.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/incense-vessel.webp" alt=""></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Jewelry 珠宝 -->
+        <div class="craft-section">
+          <div class="craft-header">
+            <span class="craft-title-en">Jewelry</span>
+            <span class="craft-title-cn">珠宝</span>
+          </div>
+          <div class="craft-carousel">
+            <div class="craft-track scroll-left">
+              <div class="craft-card"><img src="images/landing/crafts/jewelry-main.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/jewelry-buyao.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/jewelry-jade.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/jewelry-main.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/jewelry-buyao.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/jewelry-jade.webp" alt=""></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Makeup 妆容 -->
+        <div class="craft-section">
+          <div class="craft-header">
+            <span class="craft-title-en">Makeup</span>
+            <span class="craft-title-cn">妆容</span>
+          </div>
+          <div class="craft-carousel">
+            <div class="craft-track scroll-right">
+              <div class="craft-card"><img src="images/landing/crafts/makeup-dressing-table.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/makeup-flower.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/makeup-huadian.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/makeup-workshop.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/makeup-dressing-table.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/makeup-flower.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/makeup-huadian.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/makeup-workshop.webp" alt=""></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Papercut 剪纸 -->
+        <div class="craft-section">
+          <div class="craft-header">
+            <span class="craft-title-en">Papercut</span>
+            <span class="craft-title-cn">剪纸</span>
+          </div>
+          <div class="craft-carousel">
+            <div class="craft-track scroll-left">
+              <div class="craft-card"><img src="images/landing/crafts/papercut-main.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/papercut-art.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/papercut-pattern.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/papercut-shadow.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/papercut-main.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/papercut-art.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/papercut-pattern.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/papercut-shadow.webp" alt=""></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Silk 丝绸 -->
+        <div class="craft-section">
+          <div class="craft-header">
+            <span class="craft-title-en">Silk</span>
+            <span class="craft-title-cn">丝绸</span>
+          </div>
+          <div class="craft-carousel">
+            <div class="craft-track scroll-right">
+              <div class="craft-card"><img src="images/landing/crafts/silk-reflection.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/silk-weave.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/silk-reflection.webp" alt=""></div>
+              <div class="craft-card"><img src="images/landing/crafts/silk-weave.webp" alt=""></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Screen 6 -->
+    <section id="screen-6">
+
+      <!-- Progress Bar + Bulb on the same row -->
+      <div class="progress-row">
+        <div class="progress-bar" id="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <img id="bulb" src="images/assets/bulb-s.webp" alt="">
+      </div>
+
+      <!-- Content -->
+      <div class="screen-6-content">
+
+        <!-- Top Info -->
+        <div class="info-section">
+          <h2 class="info-title-en">Future</h2>
+          <p class="info-subtitle">向未来</p>
+          <p class="info-body">文化不会终结。它只会以新的形式，继续生长。</p>
+        </div>
+
+        <!-- Three Images -->
+        <div class="future-images">
+          <div class="future-img"><img src="images/landing/future/future-copy.webp" alt=""></div>
+          <div class="future-img"><img src="images/landing/future/future-poster.webp" alt=""></div>
+          <div class="future-img"><img src="images/landing/future/future-script.webp" alt=""></div>
+        </div>
+
+        <!-- Bottom Text -->
+        <div class="future-text">
+          <p>从唐代到今天，一千三百年。从今天到未来——也许在数字世界中，唐姝会成为文化探索的新入口。那些曾经只存在于博物馆玻璃柜中的文物、只流传于学术论文中的技艺、只残留在泛黄古籍里的故事，正在数字世界中被重新激活。</p>
+          <p>
+            我们相信，技术可以不止于效率与便利。当人工智能学会理解唐代的审美逻辑，当数字影像能够还原千年前的针法与色彩，当每一个普通人都可以通过屏幕触摸到那段璀璨的历史——文化传承就不再是少数人的使命，而是一场属于所有人的盛宴。
+          </p>
+          <p>这不是对过去的复刻，而是对未来的想象。唐姝站在传统与科技的交叉点上，试图回答一个古老而崭新的问题：当千年文化遇见数字时代，它们会碰撞出怎样的可能？答案，正在被书写。</p>
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+  <!-- ====== Story Detail Overlay ====== -->
+  <div id="story-overlay">
+    <div class="story-detail" id="story-detail"></div>
+  </div>
+
+  <!-- ====== Video Player Overlay ====== -->
+  <div id="video-overlay">
+    <div class="video-player-wrapper">
+      <div id="dplayer-container"></div>
+    </div>
+  </div>
+
+  <!-- ====== Top Navigation Bar (Screen 1, swaps with hamburger at Screen 2) ====== -->
+  <nav id="top-nav">
+    <div class="nav-items">
+      <a href="#screen-1" class="nav-item active">TOP</a>
+      <a href="#screen-2" class="nav-item">CULTURE</a>
+      <a href="#screen-3" class="nav-item">AI</a>
+      <a href="#screen-4" class="nav-item">TIMELINE</a>
+      <a href="#screen-5" class="nav-item">CRAFTS</a>
+      <a href="#screen-6" class="nav-item">FUTURE</a>
+      <a href="chat.html" class="nav-item">CHAT</a>
+      <a href="login.html" class="nav-item nav-login">LOGIN</a>
+    </div>
+    <div class="nav-lang">
+      <span class="nav-lang-item active">CN</span>
+      <span class="nav-lang-item">EN</span>
+      <span class="nav-lang-item">JP</span>
+    </div>
+  </nav>
+
+  <!-- ====== Back to Top Button ====== -->
+  <button id="back-to-top" aria-label="返回顶部">
+    <svg viewBox="0 0 24 24" width="20" height="20">
+      <polyline points="17 14 12 9 7 14" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="square" />
+    </svg>
+  </button>
+
+  <!-- ====== Logo (fixed, shrinks on scroll) ====== -->
+  <img id="logo" src="images/tangshu/tangshuwenzilogo.png" alt="唐姝">
+
+  <!-- ====== Entry Animation (fixed, covers viewport) ====== -->
+  <div id="overlay"></div>
+  <div id="text-group">
+    <h1>唐姝</h1>
+    <p>一部关于唐代美学、数字文化与千年工艺的数字杂志</p>
+  </div>
+
+  <!-- ====== Hamburger Menu Toggle (fixed, always accessible) ====== -->
+  <button id="menu-toggle" aria-label="菜单">
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+
+  <!-- ====== Full-screen Menu Overlay (fixed) ====== -->
+  <div id="menu-overlay">
+    <div id="menu-panel">
+
+      <!-- Left: Logo + Language Switch -->
+      <div id="menu-left">
+        <img src="images/tangshu/tangshuwenzilogo.png" alt="唐姝" id="menu-logo">
+        <div id="lang-switch">
+          <span class="lang-cn">中文</span>
+          <span class="lang-en">EN</span>
+          <span class="lang-jp">日本語</span>
+        </div>
+      </div>
+
+      <!-- Right: Navigation -->
+      <div id="menu-right">
+
+        <!-- MENU Header -->
+        <div class="menu-section-header">MENU</div>
+
+        <!-- Dual-column Nav Grid -->
+        <div class="menu-nav-grid">
+          <a href="#screen-1" class="menu-nav-item top-item">TOP <span class="menu-arrow">&gt;</span></a>
+          <a href="#screen-2" class="menu-nav-item">CULTURE <span class="menu-arrow">&gt;</span></a>
+          <a href="#screen-3" class="menu-nav-item">AI <span class="menu-arrow">&gt;</span></a>
+          <a href="#screen-4" class="menu-nav-item">TIMELINE <span class="menu-arrow">&gt;</span></a>
+          <a href="#screen-5" class="menu-nav-item">CRAFTS <span class="menu-arrow">&gt;</span></a>
+          <a href="#screen-6" class="menu-nav-item">FUTURE <span class="menu-arrow">&gt;</span></a>
+          <a href="chat.html" class="menu-nav-item">CHAT <span class="menu-arrow">&gt;</span></a>
+          <a href="login.html" class="menu-nav-item">LOGIN <span class="menu-arrow">&gt;</span></a>
+        </div>
+
+        <!-- OFFICIAL SNS Header -->
+        <div class="menu-section-header sns-header">OFFICIAL SNS</div>
+
+        <!-- SNS Grid -->
+        <div class="menu-sns-grid">
+          <a href="#" class="menu-sns-item">X <span class="sns-check">□</span></a>
+          <a href="#" class="menu-sns-item">Instagram <span class="sns-check">□</span></a>
+          <a href="#" class="menu-sns-item">TikTok <span class="sns-check">□</span></a>
+          <a href="#" class="menu-sns-item">Threads <span class="sns-check">□</span></a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/lib/DPlayer.min.js"></script>
+  <script src="js/index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1465 @@
+/* ========================================
+   唐姝 — Entry Animation & Menu Styles
+   ======================================== */
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  scrollbar-width: none;           /* Firefox */
+  -ms-overflow-style: none;        /* IE/Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none;                   /* Chrome/Safari */
+}
+
+body {
+  width: 100%;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'STSong', 'SimSun', 'Songti SC', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;                /* locked during entry animation */
+}
+
+/* ========================================
+   Parallax Background (fixed, does not scroll)
+   ======================================== */
+
+#parallax-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+    url('../images/assets/denki-bg-gy.webp') center / cover no-repeat;
+}
+
+/* Lit layer — fades in on top for smooth background transition */
+#parallax-bg-lit {
+  position: absolute;
+  inset: 0;
+  background: url('../images/assets/denki-bg.webp') center / cover no-repeat;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+}
+
+#parallax-bg.lit #parallax-bg-lit {
+  opacity: 1;
+}
+
+/* ========================================
+   Content Wrapper (scrolls over the parallax bg)
+   ======================================== */
+
+#content-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+/* ========================================
+   Screen Sections
+   ======================================== */
+
+#screen-1 {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url('../images/tangshu/tangshu-closeup.webp') center / cover no-repeat;
+}
+
+#screen-2 {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* transparent — parallax bg shows through */
+}
+
+/* ========================================
+   Screen 2 — Upper-half Content
+   ======================================== */
+
+.screen-2-content {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 58vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2rem, 4vh, 3.5rem);
+  padding: clamp(1.5rem, 3vh, 2.5rem) clamp(1rem, 4vw, 3rem) 0;
+}
+
+/* ---------- Info Section ---------- */
+.info-section {
+  text-align: center;
+  max-width: 900px;
+}
+
+.info-title-en {
+  font-family: 'Helvetica Neue', 'Arial', 'Helvetica', sans-serif;
+  font-size: clamp(2.2rem, 4.5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #fff;
+  margin-bottom: 0.4em;
+  transform: scale(2.2);
+  opacity: 0;
+  filter: blur(6px);
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.7s ease,
+              filter 0.7s ease;
+}
+
+.info-title-en.fly-in {
+  transform: scale(1);
+  opacity: 1;
+  filter: blur(0);
+}
+
+.info-subtitle {
+  font-size: clamp(1rem, 1.6vw, 1.35rem);
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 0.9em;
+}
+
+.info-body {
+  font-size: clamp(0.8rem, 1.1vw, 0.95rem);
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  line-height: 2;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ---------- Cards Carousel ---------- */
+.cards-section {
+  width: 100%;
+  overflow: hidden;
+}
+
+.cards-viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.cards-track {
+  display: flex;
+  width: max-content;
+  animation: scrollCards 25s linear infinite;
+}
+
+/* Pause animation on hover */
+.cards-track:hover {
+  animation-play-state: paused;
+}
+
+.card {
+  flex-shrink: 0;
+  width: clamp(260px, 24vw, 360px);
+  height: clamp(150px, 16vw, 220px);
+  margin-right: clamp(2rem, 4vw, 4rem);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@keyframes scrollCards {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ========================================
+   Screen 3 — AI × Tang Gallery
+   ======================================== */
+
+#screen-3 {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.screen-3-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(2rem, 4vh, 3.5rem) clamp(1rem, 4vw, 3rem) clamp(2rem, 4vh, 3.5rem);
+}
+
+/* Reuse .info-section from screen-2 */
+
+/* ---------- AI Gallery ---------- */
+.ai-gallery {
+  width: 60vw;
+  max-width: 760px;
+  margin: clamp(1.5rem, 3vh, 2.5rem) 0 clamp(1rem, 2vh, 1.5rem);
+}
+
+/* Main image — two layers for cross-fade */
+.main-image-container {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  position: relative;
+}
+
+.main-image-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.5s ease;
+}
+
+.main-image-img.front {
+  opacity: 1;
+  z-index: 2;
+}
+
+.main-image-img.back {
+  opacity: 0;
+  z-index: 1;
+}
+
+/* ---------- Thumbnails Row ---------- */
+.thumbnails-row {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+  margin-top: 6px;
+}
+
+.thumb {
+  flex: 1;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: opacity 0.35s ease;
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  aspect-ratio: 16 / 10;
+}
+
+.thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.12);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.thumb:hover::after {
+  opacity: 1;
+}
+
+/* Active thumbnail — slightly brighter */
+.thumb.active {
+  box-shadow: 0 0 0 2px #C41E3A;
+}
+
+/* ---------- Description Text ---------- */
+.ai-description {
+  width: 66vw;
+  max-width: 780px;
+  margin-top: clamp(1.5rem, 3vh, 2.5rem);
+  text-align: left;
+}
+
+.ai-description p {
+  font-size: clamp(0.9rem, 1.15vw, 1.1rem);
+  font-weight: 400;
+  line-height: 2.2;
+  color: rgba(255, 255, 255, 0.78);
+  letter-spacing: 0.04em;
+  margin-bottom: 1.3em;
+}
+
+.ai-description p:last-child {
+  margin-bottom: 0;
+}
+
+.ai-description p {
+  transition: color 0.3s ease;
+}
+
+.ai-description p:hover {
+  color: #C41E3A;
+}
+
+/* ========================================
+   Screen 4 — Timeline Card Grid
+   ======================================== */
+
+#screen-4 {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.screen-4-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(2rem, 4vh, 3.5rem) clamp(1rem, 4vw, 3rem) clamp(2rem, 4vh, 3.5rem);
+}
+
+/* ---------- Timeline Grid ---------- */
+.timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  width: 80vw;
+  max-width: 1100px;
+  margin-top: clamp(1.5rem, 3vh, 2.5rem);
+}
+
+/* ---------- Dynasty Card ---------- */
+.dynasty-card {
+  cursor: pointer;
+}
+
+.dynasty-card:hover .card-btn {
+  background: #fff;
+  color: #C41E3A;
+}
+
+/* Card image area */
+.card-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.dynasty-card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+/* Card bottom bar */
+.card-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #0a0a0a;
+  padding: 0 0 0 clamp(0.6rem, 1vw, 1rem);
+  height: 48px;
+}
+
+.card-title {
+  color: #fff;
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  font-size: clamp(0.8rem, 1.1vw, 0.95rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-btn {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background: #C41E3A;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+/* ========================================
+   Story Detail Overlay
+   ======================================== */
+
+#story-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 140;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+#story-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.story-detail {
+  width: 60vw;
+  max-width: 800px;
+  padding: clamp(2rem, 4vh, 4rem) 0;
+  text-align: left;
+}
+
+.story-detail h2 {
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #C41E3A;
+  margin-bottom: 0.3em;
+}
+
+.story-detail h3 {
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 2rem;
+}
+
+.story-detail .story-body p {
+  font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+  font-weight: 400;
+  line-height: 2.2;
+  color: rgba(255, 255, 255, 0.78);
+  letter-spacing: 0.04em;
+  margin-bottom: 1.3em;
+  transition: color 0.3s ease;
+}
+
+.story-detail .story-body p:hover {
+  color: #C41E3A;
+}
+
+/* ========================================
+   Screen 5 — Crafts Sections
+   ======================================== */
+
+#screen-5 {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.screen-5-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(2rem, 4vh, 3.5rem) 0 clamp(2rem, 4vh, 3.5rem);
+}
+
+/* ---------- Craft Section ---------- */
+.craft-section {
+  width: 100%;
+  margin-bottom: clamp(2rem, 4vh, 3.5rem);
+}
+
+.craft-section:last-child {
+  margin-bottom: 0;
+}
+
+/* Craft header — aligns with carousel left edge */
+.craft-header {
+  width: 88vw;
+  max-width: 1300px;
+  margin: 0 auto 0.8rem;
+  padding: 0 clamp(1rem, 2vw, 2rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.craft-title-en {
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #C41E3A;
+  text-transform: uppercase;
+  margin-bottom: 0.2em;
+}
+
+.craft-title-cn {
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #fff;
+}
+
+/* ---------- Craft Carousel ---------- */
+.craft-carousel {
+  width: 100%;
+  overflow: hidden;
+}
+
+.craft-track {
+  display: flex;
+  width: max-content;
+}
+
+/* Cards */
+.craft-card {
+  flex-shrink: 0;
+  width: clamp(260px, 25vw, 380px);
+  height: clamp(160px, 18vw, 240px);
+  margin-right: clamp(1.5rem, 3vw, 3rem);
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.craft-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---------- Scroll directions (driven by JS) ---------- */
+.scroll-left,
+.scroll-right {
+  will-change: transform;
+}
+
+/* ========================================
+   Screen 6 — Progress Bar & Bulb
+   ======================================== */
+
+#screen-6 {
+  position: relative;
+  width: 100%;
+  min-height: 150vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Progress Row (bar + bulb) ---------- */
+.progress-row {
+  position: absolute;
+  top: clamp(2rem, 5vh, 4rem);
+  left: 8vw;
+  right: 8vw;
+  display: flex;
+  align-items: flex-end;
+  z-index: 2;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.45);
+  margin-right: 0;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: #C9A96E;
+  transition: width 0.3s ease;
+}
+
+/* ---------- Bulb ---------- */
+#bulb {
+  flex-shrink: 0;
+  width: clamp(24px, 3vw, 36px);
+  height: auto;
+  margin-bottom: -2px;       /* bar touches bulb's lower-left */
+  margin-left: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* ---------- Screen 6 content ---------- */
+.screen-6-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 8vh;
+  padding: 0 clamp(1rem, 4vw, 3rem);
+}
+
+.future-images {
+  display: flex;
+  gap: clamp(1.2rem, 2.5vw, 2rem);
+  margin-top: clamp(2rem, 4vh, 3.5rem);
+  width: 68vw;
+  max-width: 880px;
+}
+
+.future-img {
+  flex: 1;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.future-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.future-text {
+  margin-top: clamp(2.5rem, 5vh, 4rem);
+  width: 68vw;
+  max-width: 880px;
+  text-align: left;
+}
+
+.future-text p {
+  font-size: clamp(1rem, 1.3vw, 1.25rem);
+  font-weight: 400;
+  line-height: 2.3;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.05em;
+}
+
+/* ========================================
+   Entry Animation
+   ======================================== */
+
+/* ---------- Full-screen Overlay ---------- */
+#overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #000;
+  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+#overlay.slide-down {
+  transform: translateY(100%);
+  pointer-events: none;
+}
+
+/* ---------- Centered Text Group ---------- */
+#text-group {
+  position: fixed;
+  inset: 0;
+  z-index: 101;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  pointer-events: none;
+  transition: color 0.8s ease,
+              opacity 0.6s ease;
+}
+
+#text-group.color-red {
+  color: #C41E3A;
+}
+
+#text-group.fade-out {
+  opacity: 0;
+}
+
+#text-group h1 {
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+}
+
+#text-group p {
+  font-size: clamp(0.9rem, 1.4vw, 1.25rem);
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+/* ---------- Logo (fixed, shrinks on scroll) ---------- */
+#logo {
+  position: fixed;
+  top: -8px;
+  left: -8px;
+  display: block;
+  width: clamp(450px, 55vw, 850px);
+  height: auto;
+  z-index: 10;
+  transform-origin: top left;
+  will-change: transform;
+  pointer-events: none;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ========================================
+   Hamburger Menu Toggle (fixed, always accessible)
+   ======================================== */
+
+#menu-toggle {
+  position: fixed;
+  top: clamp(1.5rem, 4vw, 2.5rem);
+  right: clamp(1.5rem, 4vw, 2.5rem);
+  width: 52px;
+  height: 44px;
+  background: #C41E3A;
+  border: none;
+  cursor: pointer;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 0;
+  opacity: 0;               /* hidden until entry animation completes */
+  transition: opacity 0.4s ease,
+              top 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Lines inside hamburger */
+#menu-toggle .bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+/* X transformation when menu is open */
+#menu-toggle.active .bar:nth-child(1) {
+  transform: translateY(4.5px) rotate(45deg);
+}
+#menu-toggle.active .bar:nth-child(2) {
+  transform: translateY(-4.5px) rotate(-45deg);
+}
+
+/* ========================================
+   Full-screen Menu Overlay (fixed)
+   ======================================== */
+
+#menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+#menu-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ---------- Menu Panel ---------- */
+#menu-panel {
+  display: flex;
+  width: 88vw;
+  max-width: 1200px;
+  height: 82vh;
+  max-height: 800px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+/* ========================================
+   Menu — Left Column (Logo + Language)
+   ======================================== */
+
+#menu-left {
+  width: 32%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+#menu-logo {
+  width: 85%;
+  height: auto;
+  margin-bottom: 2.5rem;
+}
+
+/* Language switch bar */
+#lang-switch {
+  display: flex;
+  width: 75%;
+  height: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.lang-cn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #C41E3A;
+  color: #fff;
+}
+
+.lang-en {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  color: #C41E3A;
+}
+
+.lang-jp {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  color: #C41E3A;
+}
+
+/* ========================================
+   Menu — Right Column (Navigation)
+   ======================================== */
+
+#menu-right {
+  width: 68%;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 2.5rem 1.5rem;
+  font-family: 'Helvetica Neue', 'Arial', 'Helvetica', sans-serif;
+}
+
+/* Section header (MENU / OFFICIAL SNS) */
+.menu-section-header {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #C41E3A;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  margin-bottom: 0.5rem;
+}
+
+.menu-section-header.sns-header {
+  padding-top: 1rem;
+  padding-bottom: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+/* ---------- Dual-column Nav Grid ---------- */
+.menu-nav-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(5, 1fr);
+  flex: 1;
+  gap: 0;
+}
+
+/* Each nav item */
+.menu-nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  text-decoration: none;
+  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 0 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  position: relative;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+/* TOP spans full width on first row */
+.menu-nav-item.top-item {
+  grid-column: 1 / -1;
+  border-right: none;
+}
+
+/* first row top border */
+.menu-nav-item:nth-child(1),
+.menu-nav-item:nth-child(2) {
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* vertical center divider */
+.menu-nav-item:nth-child(odd) {
+  border-right: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.menu-nav-item:hover {
+  color: #C41E3A;
+  background: rgba(196, 30, 58, 0.08);
+}
+
+/* Red arrow */
+.menu-arrow {
+  color: #C41E3A;
+  font-size: 1.1em;
+  font-weight: 400;
+  margin-left: 0.5rem;
+}
+
+/* ---------- SNS Grid ---------- */
+.menu-sns-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  padding-top: 0.4rem;
+}
+
+.menu-sns-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.45rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  transition: color 0.2s ease;
+}
+
+.menu-sns-item:nth-child(1),
+.menu-sns-item:nth-child(2) {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.menu-sns-item:nth-child(odd) {
+  border-right: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.menu-sns-item:hover {
+  color: #C41E3A;
+}
+
+.sns-check {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 1.1em;
+}
+
+/* ========================================
+   Screen 2 — Video Preview (lower half)
+   ======================================== */
+
+.video-preview {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  margin-top: clamp(0.8rem, 2vh, 2rem);
+}
+
+.video-preview-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* ========================================
+   Play Button — Three-layer Design
+   ======================================== */
+
+.play-btn-wrapper {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.play-btn-container {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.play-btn-container:hover {
+  transform: scale(1.06);
+}
+
+.play-btn-container:active {
+  transform: scale(0.97);
+}
+
+/* ---------- Layer 1: Circular Text Ring ---------- */
+.play-btn-text-ring {
+  position: absolute;
+  inset: 0;
+  width: 140px;
+  height: 140px;
+  animation: rotate-text-ring 20s linear infinite;
+}
+
+@keyframes rotate-text-ring {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ---------- Layer 2: White Ring ---------- */
+.play-btn-ring {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  border: 6px solid rgba(255, 255, 255, 0.88);
+  transition: border-color 0.35s ease,
+              box-shadow 0.35s ease,
+              border-width 0.35s ease;
+}
+
+.play-btn-container:hover .play-btn-ring {
+  border-color: #fff;
+  border-width: 7px;
+  box-shadow:
+    0 0 24px rgba(255, 255, 255, 0.25),
+    0 0 60px rgba(255, 255, 255, 0.08);
+}
+
+/* ---------- Layer 3: Dark Core ---------- */
+.play-btn-core {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #0e0e0e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.35s ease;
+}
+
+.play-btn-container:hover .play-btn-core {
+  background: #000;
+}
+
+/* ---------- Play Triangle (gold) ---------- */
+.play-btn-triangle {
+  width: 0;
+  height: 0;
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+  border-left: 21px solid #C9A96E;
+  margin-left: 4px;
+  transition: border-left-color 0.35s ease,
+              transform 0.35s ease;
+}
+
+.play-btn-container:hover .play-btn-triangle {
+  border-left-color: #e0c080;
+  transform: scale(1.08);
+}
+
+/* ========================================
+   Video Player Overlay
+   ======================================== */
+
+#video-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 160;
+  background: rgba(0, 0, 0, 0.90);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+#video-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ---------- Player Wrapper ---------- */
+.video-player-wrapper {
+  position: relative;
+  width: 70vw;
+  max-width: 960px;
+  background: #000;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+/* ---------- DPlayer container ---------- */
+#dplayer-container {
+  width: 100%;
+  background: #000;
+}
+
+/* ========================================
+   DPlayer Dark Theme Overrides
+   ======================================== */
+
+/* Controller bar — dark background */
+.dplayer-controller {
+  background: rgba(10, 10, 10, 0.92) !important;
+}
+
+/* Progress bar — accent color */
+.dplayer-bar-wrap {
+  background: rgba(255, 255, 255, 0.12) !important;
+}
+
+.dplayer-bar-time {
+  background: #C41E3A !important;
+}
+
+.dplayer-bar-preview {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.dplayer-played {
+  background: #C41E3A !important;
+}
+
+.dplayer-loaded {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Thumb dot color */
+.dplayer-thumb {
+  background: #C41E3A !important;
+  border: 2px solid #fff !important;
+}
+
+/* Icons — white */
+.dplayer-icon {
+  color: #fff !important;
+  fill: #fff !important;
+}
+
+/* Volume bar */
+.dplayer-volume-bar {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.dplayer-volume-bar-inner {
+  background: #C41E3A !important;
+}
+
+/* Menu */
+.dplayer-menu {
+  background: #1a1a1a !important;
+}
+
+.dplayer-menu-item {
+  color: #ccc !important;
+}
+
+.dplayer-menu-item:hover {
+  background: rgba(196, 30, 58, 0.15) !important;
+  color: #C41E3A !important;
+}
+
+/* Notice */
+.dplayer-notice {
+  background: rgba(10, 10, 10, 0.9) !important;
+  color: #fff !important;
+}
+
+/* Mask / loading */
+.dplayer-mask {
+  background: rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Labels */
+.dplayer-label {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Danmaku input — we keep it subtle */
+.dplayer-danmaku .dplayer-danmaku-input {
+  background: rgba(0, 0, 0, 0.5) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  color: #fff !important;
+}
+
+/* ========================================
+   Responsive — Video Player
+   ======================================== */
+
+@media (max-width: 768px) {
+  .video-player-wrapper {
+    width: 92vw;
+  }
+
+  .play-btn-container {
+    width: 110px;
+    height: 110px;
+  }
+
+  .play-btn-text-ring {
+    width: 110px;
+    height: 110px;
+  }
+
+  .play-btn-ring {
+    top: 14px;
+    left: 14px;
+    width: 82px;
+    height: 82px;
+    border-width: 5px;
+  }
+
+  .play-btn-core {
+    top: 32px;
+    left: 32px;
+    width: 46px;
+    height: 46px;
+  }
+
+  .play-btn-triangle {
+    border-top-width: 10px;
+    border-bottom-width: 10px;
+    border-left-width: 16px;
+    margin-left: 3px;
+  }
+}
+
+/* ========================================
+   Hamburger — hidden above viewport on Screen 1
+   ======================================== */
+
+#menu-toggle.menu-hidden {
+  transform: translateY(-200%);
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+/* ========================================
+   Top Navigation Bar (Screen 1, swaps with hamburger at Screen 2)
+   ======================================== */
+
+#top-nav {
+  position: fixed;
+  top: clamp(2rem, 5vh, 3.5rem);
+  right: clamp(0.8rem, 2vw, 1.5rem);
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  gap: clamp(0.5rem, 1vw, 0.8rem);
+  opacity: 0;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.5s ease;
+}
+
+#top-nav.hidden {
+  transform: translateY(-150%);
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+/* ---------- Nav Items ---------- */
+.nav-items {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.nav-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.92);
+  color: #111;
+  font-family: 'Helvetica Neue', 'Arial', 'Helvetica', sans-serif;
+  font-size: clamp(0.65rem, 0.9vw, 0.8rem);
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-decoration: none;
+  padding: 0.4rem 0.85rem;
+  transition: background 0.2s ease,
+              color 0.2s ease,
+              transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-item:hover {
+  background: #fff;
+  transform: translateY(-1px);
+}
+
+/* LOGIN outline style */
+.nav-item.nav-login {
+  background: transparent;
+  color: #C41E3A;
+  border: 1px solid #C41E3A;
+}
+
+.nav-item.nav-login:hover {
+  background: #C41E3A;
+  color: #fff;
+}
+
+.nav-item.active {
+  color: #C41E3A;
+}
+
+/* ---------- Language Switch ---------- */
+.nav-lang {
+  display: flex;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  margin-left: 0.3rem;
+  flex-shrink: 0;
+}
+
+.nav-lang-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.6rem;
+  font-family: 'Helvetica Neue', 'Arial', 'Helvetica', sans-serif;
+  font-size: clamp(0.6rem, 0.8vw, 0.7rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.55);
+  transition: background 0.2s ease,
+              color 0.2s ease;
+}
+
+.nav-lang-item.active {
+  background: rgba(255, 255, 255, 0.92);
+  color: #111;
+}
+
+.nav-lang-item:not(.active):hover {
+  color: #fff;
+}
+
+/* ========================================
+   Back to Top Button
+   ======================================== */
+
+#back-to-top {
+  position: fixed;
+  bottom: clamp(2rem, 5vh, 3.5rem);
+  right: clamp(1.5rem, 4vw, 2.5rem);
+  z-index: 20;
+  width: clamp(44px, 5vw, 54px);
+  height: clamp(44px, 5vw, 54px);
+  background: #C41E3A;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transform: translateX(120%);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.35s ease,
+              background 0.25s ease;
+}
+
+#back-to-top.visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+#back-to-top:hover {
+  background: #a01830;
+}
+
+#back-to-top:active {
+  transform: translateX(0) scale(0.95);
+}
+
+#back-to-top svg {
+  display: block;
+  pointer-events: none;
+}
+
+/* ========================================
+   Responsive — Top Nav
+   ======================================== */
+
+@media (max-width: 768px) {
+  #top-nav {
+    top: clamp(1.2rem, 3vh, 2rem);
+    right: clamp(0.5rem, 1.5vw, 1rem);
+    gap: 0.3rem;
+  }
+
+  .nav-items {
+    gap: 0.2rem;
+  }
+
+  .nav-item {
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    padding: 0.3rem 0.5rem;
+  }
+
+  .nav-lang-item {
+    padding: 0.3rem 0.45rem;
+    font-size: 0.6rem;
+  }
+}
+

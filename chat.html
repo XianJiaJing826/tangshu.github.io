@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>唐姝 · Chat</title>
+  <link rel="stylesheet" href="css/chat.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64.png">
+</head>
+<body>
+
+  <!-- Parallax Background -->
+  <div id="parallax-bg"></div>
+
+  <!-- Top Navigation -->
+  <nav id="top-nav">
+    <div class="nav-items">
+      <a href="index.html" class="nav-item">HOME</a>
+      <a href="login.html" class="nav-item nav-login">LOGIN</a>
+    </div>
+  </nav>
+
+  <!-- Logo -->
+  <img id="logo" src="images/tangshu/tangshuwenzilogo.png" alt="唐姝">
+
+  <!-- Main Layout -->
+  <div id="chat-layout">
+
+    <!-- Left Sidebar -->
+    <aside id="sidebar">
+      <div class="sidebar-header">
+        <button id="btn-toggle-sidebar" class="btn-toggle-sidebar" title="折叠侧边栏">◀</button>
+        <span class="sidebar-title">History</span>
+        <button id="btn-new-chat" class="btn-new-chat" title="新对话">+</button>
+      </div>
+      <div id="history-list" class="history-list"></div>
+      <div class="sidebar-footer">
+        <button id="btn-export" class="btn-export" title="导出对话">Export</button>
+      </div>
+    </aside>
+
+    <!-- Chat Area -->
+    <main id="chat-main">
+      <div id="messages-container" class="messages-container">
+        <div class="welcome-message" id="welcome-message">
+          <div class="welcome-logo">唐姝</div>
+          <p>Intangible Heritage · AI Chat</p>
+          <p class="welcome-sub">Explore China's intangible cultural heritage — crafts, traditions, stories, and living history.</p>
+        </div>
+      </div>
+
+      <!-- Input Area -->
+      <div class="input-area">
+        <div class="input-row">
+          <textarea id="chat-input" class="chat-input" rows="1" placeholder="输入消息，探索非遗文化…"></textarea>
+          <div class="input-actions">
+            <select id="model-select" class="model-select" title="选择模型"></select>
+            <button id="btn-send" class="btn-send" aria-label="发送" title="发送 (Enter)">
+              <svg class="icon-send" viewBox="0 0 24 24" width="20" height="20">
+                <path d="M2 21l21-9L2 3v7l15 2-15 2v7z" fill="#fff"/>
+              </svg>
+              <svg class="icon-stop" viewBox="0 0 24 24" width="20" height="20" style="display:none">
+                <rect x="6" y="6" width="12" height="12" rx="2" fill="#fff"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="input-hint">Enter 发送 · Shift+Enter 换行</div>
+      </div>
+    </main>
+
+  </div>
+
+  <script src="js/prompt.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+</html>

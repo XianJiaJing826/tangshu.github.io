@@ -1,0 +1,508 @@
+/* ========================================
+   唐姝 · Login — Styles
+   ======================================== */
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  height: 100%;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'STSong', 'SimSun', 'Songti SC', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #0a0a0a;
+  color: #fff;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* ========================================
+   Parallax Background (fixed)
+   ======================================== */
+
+#parallax-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+    url('../images/assets/denki-bg-gy.webp') center / cover no-repeat;
+}
+
+#parallax-bg-lit {
+  position: absolute;
+  inset: 0;
+  background: url('../images/assets/denki-bg.webp') center / cover no-repeat;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+}
+
+#parallax-bg.lit #parallax-bg-lit {
+  opacity: 1;
+}
+
+/* ========================================
+   Top Navigation Bar
+   ======================================== */
+
+#top-nav {
+  position: fixed;
+  top: clamp(1.5rem, 4vh, 2.5rem);
+  right: clamp(1rem, 3vw, 2rem);
+  z-index: 15;
+  display: flex;
+  align-items: center;
+}
+
+.nav-items {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.nav-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.92);
+  color: #111;
+  font-family: 'Helvetica Neue', 'Arial', 'Helvetica', sans-serif;
+  font-size: clamp(0.65rem, 0.9vw, 0.8rem);
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-decoration: none;
+  padding: 0.4rem 0.85rem;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-item:hover {
+  background: #fff;
+  transform: translateY(-1px);
+}
+
+/* LOGIN outline style */
+.nav-item.nav-login {
+  background: transparent;
+  color: #C41E3A;
+  border: 1px solid #C41E3A;
+}
+
+.nav-item.nav-login:hover {
+  background: #C41E3A;
+  color: #fff;
+}
+
+/* ========================================
+   Logo (fixed, top-left)
+   ======================================== */
+
+#logo {
+  position: fixed;
+  top: 0.5rem;
+  left: 1rem;
+  width: clamp(120px, 14vw, 180px);
+  height: auto;
+  z-index: 10;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* ========================================
+   Login Card — Centered on Screen
+   ======================================== */
+
+.login-wrapper {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: clamp(1rem, 3vw, 2rem);
+}
+
+.login-card {
+  width: 100%;
+  min-width: 320px;
+  max-width: 420px;
+  background: rgba(8, 8, 8, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: clamp(2rem, 5vh, 3rem) clamp(1.5rem, 4vw, 2.5rem);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ---------- Card Header ---------- */
+.login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.login-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  color: #C41E3A;
+  margin-bottom: 0.3em;
+}
+
+.login-subtitle {
+  font-family: 'Helvetica Neue', 'Arial', 'Helvetica', sans-serif;
+  font-size: clamp(0.7rem, 0.9vw, 0.8rem);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+}
+
+/* ========================================
+   Form Fields
+   ======================================== */
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* ---------- Input Group ---------- */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.input-label {
+  font-family: 'Helvetica Neue', 'Arial', 'Helvetica', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  padding-left: 0.1rem;
+}
+
+.input-field {
+  background: rgba(255, 255, 255, 0.06);
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-family: inherit;
+  font-size: clamp(0.85rem, 1vw, 0.95rem);
+  letter-spacing: 0.03em;
+  padding: 0.6rem 0.2rem;
+  outline: none;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.input-field:focus {
+  border-bottom-color: #C41E3A;
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.input-field::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* ---------- Password Field with Toggle ---------- */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper .input-field {
+  flex: 1;
+  padding-right: 2.5rem;
+}
+
+.btn-toggle-password {
+  position: absolute;
+  right: 0.2rem;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  padding: 0.4rem;
+  font-size: 0.85rem;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.btn-toggle-password:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ---------- Row: Remember + Forgot ---------- */
+.form-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Checkbox */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.checkbox-group input[type="checkbox"]:checked {
+  background: #C41E3A;
+  border-color: #C41E3A;
+}
+
+.checkbox-group input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 1px;
+  width: 5px;
+  height: 8px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-label {
+  font-family: 'Helvetica Neue', 'Arial', 'Helvetica', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.45);
+  user-select: none;
+}
+
+/* Forgot password link */
+.link-forgot {
+  font-family: 'Helvetica Neue', 'Arial', 'Helvetica', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.link-forgot:hover {
+  color: #C41E3A;
+}
+
+/* ========================================
+   Buttons
+   ======================================== */
+
+.btn-login {
+  width: 100%;
+  padding: 0.7rem;
+  background: #C41E3A;
+  border: none;
+  color: #fff;
+  font-family: 'Helvetica Neue', 'Arial', 'Helvetica', sans-serif;
+  font-size: clamp(0.8rem, 0.95vw, 0.9rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.15s ease, opacity 0.25s ease;
+}
+
+.btn-login:hover {
+  background: #a01830;
+}
+
+.btn-login:active {
+  transform: scale(0.97);
+}
+
+.btn-login.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* ========================================
+   Register Link
+   ======================================== */
+
+.register-hint {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-family: 'Helvetica Neue', 'Arial', 'Helvetica', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.link-register {
+  color: #C41E3A;
+  text-decoration: none;
+  font-weight: 700;
+  margin-left: 0.3em;
+  transition: color 0.2s ease;
+}
+
+.link-register:hover {
+  color: #e05060;
+}
+
+/* ========================================
+   Validation Error
+   ======================================== */
+
+.input-field.error {
+  border-bottom-color: #E57373;
+}
+
+.error-message {
+  font-family: 'Helvetica Neue', 'Arial', 'Helvetica', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: #E57373;
+  letter-spacing: 0.03em;
+  padding-left: 0.1rem;
+  display: none;
+}
+
+.error-message.visible {
+  display: block;
+}
+
+/* ========================================
+   Back to Top Button
+   ======================================== */
+
+#back-to-top {
+  position: fixed;
+  bottom: clamp(2rem, 5vh, 3.5rem);
+  right: clamp(1.5rem, 4vw, 2.5rem);
+  z-index: 20;
+  width: clamp(44px, 5vw, 54px);
+  height: clamp(44px, 5vw, 54px);
+  background: #C41E3A;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transform: translateX(120%);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.35s ease,
+              background 0.25s ease;
+}
+
+#back-to-top.visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+#back-to-top:hover {
+  background: #a01830;
+}
+
+#back-to-top:active {
+  transform: translateX(0) scale(0.95);
+}
+
+#back-to-top svg {
+  display: block;
+  pointer-events: none;
+}
+
+/* ========================================
+   Toast Notification
+   ======================================== */
+
+.toast {
+  position: fixed;
+  top: clamp(1.5rem, 4vh, 2.5rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(-120%);
+  z-index: 300;
+  background: #C41E3A;
+  color: #fff;
+  font-family: 'Helvetica Neue', 'Arial', 'Helvetica', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.7rem 1.5rem;
+  border-radius: 2px;
+  pointer-events: none;
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.3s ease;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+
+@media (max-width: 768px) {
+  .login-card {
+    min-width: unset;
+    max-width: 92vw;
+    padding: 1.8rem 1.3rem;
+  }
+
+  #top-nav {
+    top: clamp(1rem, 3vh, 1.8rem);
+    right: clamp(0.5rem, 2vw, 1rem);
+  }
+
+  .nav-item {
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    padding: 0.3rem 0.55rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    max-width: 96vw;
+  }
+
+  .form-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .login-title {
+    font-size: 1.5rem;
+  }
+}
